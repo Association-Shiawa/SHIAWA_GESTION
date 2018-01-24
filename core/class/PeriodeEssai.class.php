@@ -26,7 +26,7 @@ class PeriodeEssai {
      * @param type $idPe
      */
     public function init($idPe): void {
-        $sql = "SELECT * FROM periodes_essai WHERE PE_ID = :idpe";
+        $sql = "SELECT * FROM periode_essais WHERE PE_ID = :idpe";
         $query = $this->db->prepare($sql);
         $query->bindParam(":idpe", $idPe);
         $query->execute();

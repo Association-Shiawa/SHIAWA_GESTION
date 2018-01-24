@@ -15,4 +15,5 @@ Autoloader::register();
 # ------------------------------------
 
 $api = new APIShiawaGest();
+echo $api->createHeader();
 echo json_encode( $api->routing() );

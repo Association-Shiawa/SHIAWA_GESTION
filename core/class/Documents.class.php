@@ -28,20 +28,20 @@ class Documents {
     public function init($id): void{
         $sql = "
 SELECT
-	documents_adherent.DA_ID,
-	documents_adherent.DA_TYPEDOC,
-	documents_adherent.DA_DOCAJOUR,
-	documents_adherent.R_DATE,
-	documents_adherent.A_ID
+	documents_adherents.DA_ID,
+	documents_adherents.DA_TYPEDOC,
+	documents_adherents.DA_DOCAJOUR,
+	documents_adherents.R_DATERETOUR,
+	documents_adherents.A_ID
 FROM
-	documents_adherent
+	documents_adherents
 WHERE
-	documents_adherent.DA_ID = :id";
+	documents_adherents.DA_ID = :id";
         $query = $this->db->prepare($sql);
         $query->bindParam(":id", $id);
         $query->execute();
         while($d = $query->fetch(PDO::FETCH_OBJ)){
-            $this->setDateRemise($d->R_DATE);
+            $this->setDateRemise($d->R_DATERETOUR);
             $this->setDocajour($d->DA_DOCAJOUR);
             $this->setId($d->DA_ID);
             $this->setTypedoc($d->DA_TYPEDOC);
