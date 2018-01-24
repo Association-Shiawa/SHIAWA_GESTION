@@ -28,7 +28,7 @@ SELECT
 	cotisations.CT_MONTANT,
 	cotisations.CT_TYPEREGLEMENT,
 	cotisations.CT_DATEENCAISSEMENT,
-	rel_cotiser.CT_DATE,
+	rel_cotiser.CT_DATEPAIEMENT,
 	rel_cotiser.CT_ID,
 	rel_cotiser.A_ID
 FROM
@@ -41,7 +41,7 @@ WHERE
         $query->execute();
         while($d = $query->fetch(PDO::FETCH_OBJ)){
             $this->setDateEncaissement($d->CT_DATEENCAISSEMENT);
-            $this->setDatePaiement($d->CT_DATE);
+            $this->setDatePaiement($d->CT_DATEPAIEMENT);
             $this->setId($d->CT_ID);
             $this->setMontant($d->CT_MONTANT);
             $this->setTypereglement($d->CT_MONTANT);

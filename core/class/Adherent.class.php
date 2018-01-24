@@ -74,7 +74,7 @@ class Adherent {
      * chronologique
      */
     public function retrieveDocuments(): void {
-        $sql = "SELECT * FROM documents_adherent WHERE A_ID = :id";
+        $sql = "SELECT * FROM documents_adherents WHERE A_ID = :id";
         $query = $this->db->prepare($sql);
         $query->bindParam(":id", $this->id);
         $query->execute();
@@ -93,7 +93,7 @@ class Adherent {
      * chronologique
      */
     public function retrievePE(): void {
-        $sql = "SELECT PE_ID FROM periodes_essai WHERE A_ID = :id";
+        $sql = "SELECT PE_ID FROM periode_essais WHERE A_ID = :id";
         $query = $this->db->prepare($sql);
         $query->bindParam(":id", $this->id);
         $query->execute();
