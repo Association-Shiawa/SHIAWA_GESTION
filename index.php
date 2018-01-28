@@ -13,9 +13,7 @@ Autoloader::register();
 #
 # ------------------------------------
 
-$a = new Adherent();
-$a->init(1);
-echo $a->get();
 
+header("Location: client/index.php");
 ?>
 

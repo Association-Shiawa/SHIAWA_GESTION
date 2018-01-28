@@ -47,4 +47,32 @@ class AdherentManager {
         return $rtrn;
     }
     
+    /**
+     * Fonction de connection a l'application (Locale)
+     * @param type $login
+     * @param type $pass
+     * @return bool
+     */
+    public static function connection($login, $pass): bool{
+        $db = (new Database())->getInstance();
+        $query = $db->prepare("SELECT * FROM login WHERE L_IDENT = :ident AND L_PASSWORD = :pass");
+        $query->bindParam(":ident", $login);
+        $query->bindParam(":pass", $pass);
+        $query->execute();
+        $d = [];
+        while($data = $query->fetch()){
+            array_push($d, $data);
+        }
+        if(count($d) == 1){
+            //On a bien notre entrée
+            //Création de la session
+            $_SESSION['logged'] = true;
+            $_SESSION['ident'] = $d[0]['L_IDENT'];
+            $_SESSION['dateSession'] = (new DateTime())->format("d/m/y H:i:s");
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }
