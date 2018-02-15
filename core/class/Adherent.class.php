@@ -9,7 +9,7 @@
 class Adherent {
     # Définition des propriétés
 
-    public $id, $nom, $prenom, $dateNaissance, $adr1, $cp, $ville, $sexe, $telephone, $mail, $dateFinExercice, $isValid;
+    public $id, $nom, $prenom, $dateNaissance, $adr1, $cp, $ville, $sexe, $telephone, $mail, $dateFinExercice, $isValid, $img;
     public $contacts, $documents, $periodeEssai, $cotisations;
     private $db;
 
@@ -40,6 +40,7 @@ class Adherent {
             $this->setSexe($data->A_SEXE);
             $this->setTelephone($data->A_TELEPHONE);
             $this->setVille($data->A_VILLE);
+            $this->setImg($data->A_IMG);
         }
         $query->closeCursor();
         
@@ -264,5 +265,15 @@ class Adherent {
     function setCotisations($cotisations) {
         $this->cotisations = $cotisations;
     }
+    
+    function getImg() {
+        return $this->img;
+    }
+
+    function setImg($img) {
+        $this->img = $img;
+    }
+
+
 
 }
